@@ -19,7 +19,7 @@ Resources:
         SemanticVersion: 4.1.0
       Parameters:
         EnableInstantCapture: "false"
-        SSMParameterPrefix: !Sub service/payment/stripe/${Stage}
+        SSMParameterPath: !Sub service/payment/stripe/${Stage}
 
 
   CollectPayment:
