@@ -19,6 +19,8 @@ Resources:
         SemanticVersion: 4.0.0
       Parameters:
         EnableInstantCapture: "false"
+        SSMParameterPrefix: !Sub service/payment/stripe/${Stage}
+
 
   CollectPayment:
     Type: AWS::Serverless::Function
@@ -61,7 +63,7 @@ Resources:
   StripePaymentApplicationKeyParameter:
     Type: "AWS::SSM::Parameter"
     Properties: 
-        Name: /lambda-stripe-charge/stripe-secret-key
+        Name: !Sub /service/payment/stripe/${Stage}
         Description: Stripe Key for SAR App 
         Type: String
         Value: !Ref StripeKey
